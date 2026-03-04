@@ -2,6 +2,19 @@ import CardAluno from "../CardAluno/CardAluno"
 import Rodape from "../Rodape/Rodape"
 import "./homePage.css"
 
+interface Aluno {
+    id: number
+    nome: string
+    curso: string
+    descricao: string
+    status: boolean
+}
+
+const alunos: Aluno[] = [
+    { id: 1, nome: "Bianca S. Paiva", curso: "TDS03", descricao: "Aluno inteligente", status: true },
+    { id: 2, nome: "Heitor Guimarães", curso: "TDS03", descricao: "Aluno inteligente", status: true },
+    { id: 3, nome: "Felipe Aragão da Silva", curso: "TDS03", descricao: "Aluno inteligente", status: false }
+]
 
 function HomePage() {
 
@@ -15,28 +28,23 @@ function HomePage() {
                 <h2>Ano - {ano}</h2>
             </header>
 
-            <CardAluno 
-                nomeAluno="Bianca S. Paiva"
-                curso="TDS03"
-                textoAluno="Aluno inteligente pra caralho!"
-                status = {true}
-            />
+            <div className="container-card">
 
-            <CardAluno 
-                nomeAluno="Heitor Guimarães"
-                curso="TDS03"
-                textoAluno="Aluno inteligente pra caralho!"
-                status = {true}
-            />
+                {
+                    alunos.map((aluno) => (
+                        <CardAluno
+                            key={aluno.id}
+                            nomeAluno={aluno.nome}
+                            curso={aluno.curso}
+                            textoAluno={aluno.descricao}
+                            status={aluno.status}
+                        />
+                    ))
+                }
+            </div>
 
-            <CardAluno 
-                nomeAluno="Felipe Aagão da Silva"
-                curso="TDS03"
-                textoAluno="Aluno inteligente pra caralho!"
-                status = {true}
-            />
-            
-            <Rodape/>
+
+            <Rodape />
         </>
     )
 }

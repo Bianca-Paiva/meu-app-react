@@ -1,20 +1,36 @@
-import CardAluno from "../CardAluno/CardAluno"
+// import CardAluno from "../CardAluno/CardAluno"
+import CardDisciplina from "../CardDisciplina/CardDisciplina"
 import Rodape from "../Rodape/Rodape"
 import "./homePage.css"
 
-interface Aluno {
+// interface Aluno {
+//     id: number
+//     nome: string
+//     curso: string
+//     descricao: string
+//     status: boolean
+// }
+
+// const alunos: Aluno[] = [
+//     { id: 1, nome: "Bianca S. Paiva", curso: "TDS03", descricao: "Aluno inteligente", status: true },
+//     { id: 2, nome: "Heitor Guimarães", curso: "TDS03", descricao: "Aluno inteligente", status: true },
+//     { id: 3, nome: "Felipe Aragão da Silva", curso: "TDS03", descricao: "Aluno inteligente", status: false }
+// ]
+
+interface Disciplina {
     id: number
     nome: string
-    curso: string
-    descricao: string
-    status: boolean
+    cargaHoraria: number
+    professor: string
+    concluida: boolean
 }
 
-const alunos: Aluno[] = [
-    { id: 1, nome: "Bianca S. Paiva", curso: "TDS03", descricao: "Aluno inteligente", status: true },
-    { id: 2, nome: "Heitor Guimarães", curso: "TDS03", descricao: "Aluno inteligente", status: true },
-    { id: 3, nome: "Felipe Aragão da Silva", curso: "TDS03", descricao: "Aluno inteligente", status: false }
+const disciplinas: Disciplina[] = [
+    { id: 1, nome: "Matemática", cargaHoraria: 96, professor: "Laerte", concluida: true },
+    { id: 2, nome: "Programação", cargaHoraria: 108, professor: "Diego Áquila", concluida: true },
+    { id: 3, nome: "Empreendedorismo", cargaHoraria: 96, professor: "Willian", concluida: false }
 ]
+
 
 function HomePage() {
 
@@ -28,7 +44,7 @@ function HomePage() {
                 <h2>Ano - {ano}</h2>
             </header>
 
-            <div className="container-card">
+            {/* <div className="container-card">
 
                 {
                     alunos.map((aluno) => (
@@ -41,8 +57,20 @@ function HomePage() {
                         />
                     ))
                 }
-            </div>
+            </div> */}
 
+            <div className="cardDisciplina">
+                {
+                    disciplinas.map((disciplina) => (
+                        <CardDisciplina
+                            nome={disciplina.nome}
+                            cargaHoraria={disciplina.cargaHoraria}
+                            professor={disciplina.professor}
+                            concluida={disciplina.concluida}
+                        />
+                    ))
+                }
+            </div>
 
             <Rodape />
         </>
